@@ -3,9 +3,9 @@ package pe.paku.weatherapp.data.remote.dto
 
 import com.google.gson.annotations.SerializedName
 
-data class ImageURLs(
+data class ImageURLsDTO(
     @SerializedName("androidImageURLs")
-    val androidImageURLs: AndroidImageURLs,
+    val androidImageURLs: AndroidImageURLsDTO,
     @SerializedName("iOSImageURLs")
-    val iOSImageURLs: IOSImageURLs
+    val iOSImageURLs: IOSImageURLsDTO
 )

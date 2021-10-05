@@ -3,7 +3,7 @@ package pe.paku.weatherapp.data.remote.dto
 
 import com.google.gson.annotations.SerializedName
 
-data class AndroidImageURLs(
+data class AndroidImageURLsDTO(
     @SerializedName("hdpiImageURL")
     val hdpiImageURL: String,
     @SerializedName("mdpiImageURL")

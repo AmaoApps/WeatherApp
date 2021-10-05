@@ -3,7 +3,7 @@ package pe.paku.weatherapp.data.remote.dto
 
 import com.google.gson.annotations.SerializedName
 
-data class CityWeatherDTO(
+data class CityDTO(
     @SerializedName("admin1 code")
     val admin1Code: String,
     @SerializedName("admin2 code")
@@ -31,7 +31,7 @@ data class CityWeatherDTO(
     @SerializedName("geonameid")
     val geonameid: Int,
     @SerializedName("imageURLs")
-    val imageURLs: ImageURLs,
+    val imageURLs: ImageURLsDTO,
     @SerializedName("latitude")
     val latitude: Double,
     @SerializedName("longitude")
