@@ -9,9 +9,9 @@ import retrofit2.http.Query
 interface WeatherApi {
 
     @GET("cities")
-    fun getCitiesBySearch(@Query("search") city: String) : ResponseSearchDTO
+    suspend fun getCitiesBySearch(@Query("search") city: String) : ResponseSearchDTO
 
     @GET("cities/{idCity}")
-    fun getDetailCityById(@Path("idCity") idCity: String) : ResponseDetailDTO
+    suspend fun getDetailCityById(@Path("idCity") idCity: String) : ResponseDetailDTO
 
 }
