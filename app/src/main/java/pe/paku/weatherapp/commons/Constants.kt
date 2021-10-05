@@ -2,6 +2,7 @@ package pe.paku.weatherapp.commons
 
 object Constants {
 
+    val EMPTY_STRING: String = ""
     val BASE_URL_WEATHER : String =  "https://weather.exam.bottlerocketservices.com/";
 
     object PathScreen {

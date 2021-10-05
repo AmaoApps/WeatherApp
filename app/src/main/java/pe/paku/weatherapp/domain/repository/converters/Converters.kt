@@ -17,7 +17,8 @@ fun ResponseSearchDTO.toCity() : City? {
             countryCode = cities[0].countryCode,
             date = Calendar.getInstance().time.getStringDateByTimeZone(cities[0].timezone),
             time = Calendar.getInstance().time.getStringTimeByTimeZone(cities[0].timezone),
-            timezone = cities[0].timezone
+            timezone = cities[0].timezone,
+            image = cities[0].imageURLs.androidImageURLs.xhdpiImageURL
         )
     } else return null
 }
@@ -29,7 +30,8 @@ fun CityDTO.toCity() : City {
         countryCode = countryCode,
         date = Calendar.getInstance().time.getStringDateByTimeZone(timezone),
         time = Calendar.getInstance().time.getStringTimeByTimeZone(timezone),
-        timezone = timezone
+        timezone = timezone,
+        image = imageURLs.androidImageURLs.xhdpiImageURL
     )
 }
 

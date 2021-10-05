@@ -6,5 +6,6 @@ data class City(
     val countryCode: String = "",
     val date: String = "",
     val time: String = "",
-    val timezone: String = ""
+    val timezone: String = "",
+    val image: String = ""
 )
