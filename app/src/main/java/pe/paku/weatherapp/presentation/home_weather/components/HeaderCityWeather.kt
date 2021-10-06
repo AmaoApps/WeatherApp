@@ -10,8 +10,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.ImagePainter
 import coil.compose.rememberImagePainter
@@ -53,7 +56,20 @@ fun HeaderCityWeather(city : City){
             ) {
                 Text(
                     text = "${city.name}, ${city.countryCode}",
-                    textAlign = TextAlign.Center
+                    textAlign = TextAlign.Center,
+                    fontSize = 24.sp,
+                    fontWeight = FontWeight.Bold
+                )
+                Text(
+                    text = "${city.date}   ${city.time}",
+                    textAlign = TextAlign.Center,
+                    fontSize = 16.sp
+                )
+                Text(
+                    text = "Temp º",
+                    textAlign = TextAlign.Center,
+                    fontSize = 42.sp,
+                    fontWeight = FontWeight.Bold
                 )
             }
         }

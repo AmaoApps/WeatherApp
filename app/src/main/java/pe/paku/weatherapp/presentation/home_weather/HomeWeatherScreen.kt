@@ -14,10 +14,15 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.google.accompanist.pager.ExperimentalPagerApi
+import com.google.accompanist.pager.HorizontalPager
+import com.google.accompanist.pager.HorizontalPagerIndicator
+import com.google.accompanist.pager.rememberPagerState
 import pe.paku.weatherapp.R
 import pe.paku.weatherapp.commons.Constants
 import pe.paku.weatherapp.presentation.home_weather.components.HeaderCityWeather
 
+@ExperimentalPagerApi
 @Composable
 fun HomeWeatherScreen(
     navController: NavController,
@@ -62,12 +67,14 @@ fun HomeWeatherScreen(
     )
 }
 
+@ExperimentalPagerApi
 @Composable
 fun getBodyCityWeather(
     navController: NavController,
     state: HomeWeatherState,
     viewModel: HomeWeatherViewModel
 ){
+    val pagerState = rememberPagerState()
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -76,10 +83,21 @@ fun getBodyCityWeather(
         if(state.city.id!=0){
             Box(
                 modifier = Modifier
+
                     .weight(.4f)
                     .fillMaxSize()
             ) {
-                HeaderCityWeather(city = state.city)
+                HorizontalPager(
+                    count = 2,
+                    state = pagerState
+                ) {
+                    HeaderCityWeather(city = state.city)
+                }
+                HorizontalPagerIndicator(
+                    pagerState = pagerState, modifier = Modifier
+                        .padding(16.dp)
+                        .align(Alignment.BottomCenter)
+                )
             }
             Box(
                 modifier = Modifier
@@ -89,7 +107,8 @@ fun getBodyCityWeather(
                 Text(
                     text = "detalles City",
                     style = MaterialTheme.typography.body1,
-                    textAlign = TextAlign.Center)
+                    textAlign = TextAlign.Center
+                )
             }
         }
         if(state.isLoading){

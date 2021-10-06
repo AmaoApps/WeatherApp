@@ -5,10 +5,12 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.google.accompanist.pager.ExperimentalPagerApi
 import pe.paku.weatherapp.commons.Constants
 import pe.paku.weatherapp.presentation.home_weather.HomeWeatherScreen
 import pe.paku.weatherapp.presentation.image_weather.ImageWeatherScreen
 
+@ExperimentalPagerApi
 @Composable
 fun NavigationApp(){
     val navigation = rememberNavController()
