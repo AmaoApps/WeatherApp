@@ -38,7 +38,9 @@ fun CityDTO.toCity() : City {
 fun DayDTO.toCityDayWeather() : CityDayWeather {
     return CityDayWeather(
         dayOfWeek = dayOfTheWeek,
-        hourly = hourlyWeather.map { it.toCityHourWeather() }
+        hourly = hourlyWeather.map { it.toCityHourWeather() },
+        temperature = (high + low) / 2,
+        weatherType = weatherType
     )
 }
 

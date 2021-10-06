@@ -4,7 +4,7 @@ data class CityHourWeather(
     val hour: Int,
     val temperatura: Int,
     val weatherType: String,
-    val rainChance: Int,
+    val rainChance: Double,
     val humidity: Double,
-    val windSpeed: Int
+    val windSpeed: Double
 )

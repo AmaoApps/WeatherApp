@@ -8,6 +8,7 @@ import androidx.compose.material.icons.filled.Delete
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
@@ -20,6 +21,8 @@ import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
 import pe.paku.weatherapp.R
 import pe.paku.weatherapp.commons.Constants
+import pe.paku.weatherapp.domain.model.CityDayWeather
+import pe.paku.weatherapp.presentation.home_weather.components.DateWeekWeatherItem
 import pe.paku.weatherapp.presentation.home_weather.components.HeaderCityWeather
 
 @ExperimentalPagerApi
@@ -83,7 +86,6 @@ fun getBodyCityWeather(
         if(state.city.id!=0){
             Box(
                 modifier = Modifier
-
                     .weight(.4f)
                     .fillMaxSize()
             ) {
@@ -95,23 +97,51 @@ fun getBodyCityWeather(
                 }
                 HorizontalPagerIndicator(
                     pagerState = pagerState, modifier = Modifier
-                        .padding(16.dp)
-                        .align(Alignment.BottomCenter)
+                        .padding(top = 64.dp)
+                        .align(Alignment.TopCenter)
                 )
             }
-            Box(
-                modifier = Modifier
+            if(state.isLoading){
+                Box(modifier = Modifier
                     .weight(.6f)
-                    .fillMaxSize()
-            ) {
-                Text(
-                    text = "detalles City",
-                    style = MaterialTheme.typography.body1,
-                    textAlign = TextAlign.Center
-                )
+                    .fillMaxWidth()
+                    .padding(8.dp))
+                {
+                    CircularProgressIndicator(
+                        modifier = Modifier
+                            .align(Alignment.Center)
+                    )
+                }
+            } else {
+                Box(
+                    modifier = Modifier
+                        .weight(.6f)
+                        .fillMaxSize()
+                ) {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxSize()
+                    ) {
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(8.dp),
+                            horizontalArrangement = Arrangement.SpaceBetween
+                        ){
+                            for (daysCity in state.detailCity.days){
+                                DateWeekWeatherItem(daysCity)
+                            }
+                        }
+                        Text(
+                            text = state.detailCity.city.countryCode,
+                            style = MaterialTheme.typography.body1,
+                            textAlign = TextAlign.Center
+                        )
+                    }
+                }
             }
         }
-        if(state.isLoading){
+        if(state.isLoading && state.city.id == 0){
             Box(modifier = Modifier
                 .fillMaxSize()
                 .padding(8.dp))

@@ -9,4 +9,13 @@ object Constants {
         val HOME_WEATHER : String = "home_weather"
         val IMAGE_WEATHER: String = "image_weather"
     }
+
+    object WeatherType {
+        val SUNNY: String  = "sunny"
+        val PARTY_CLOUDY: String = "partlyCloudy"
+        val SNOW_SLEET: String = "snowSleet"
+        val HEAVY_RAIN: String = "heavyRain"
+        val LIGHT_RAIN: String = "lightRain"
+        val CLOUDY: String = "cloudy"
+    }
 }

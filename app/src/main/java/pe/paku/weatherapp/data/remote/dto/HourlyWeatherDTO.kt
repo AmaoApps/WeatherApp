@@ -9,11 +9,11 @@ data class HourlyWeatherDTO(
     @SerializedName("humidity")
     val humidity: Double,
     @SerializedName("rainChance")
-    val rainChance: Int,
+    val rainChance: Double,
     @SerializedName("temperature")
     val temperature: Int,
     @SerializedName("weatherType")
     val weatherType: String,
     @SerializedName("windSpeed")
-    val windSpeed: Int
+    val windSpeed: Double
 )
