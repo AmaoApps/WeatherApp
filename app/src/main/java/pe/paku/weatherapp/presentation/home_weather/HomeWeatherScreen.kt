@@ -8,8 +8,8 @@ import androidx.compose.material.icons.filled.Delete
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -21,9 +21,9 @@ import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
 import pe.paku.weatherapp.R
 import pe.paku.weatherapp.commons.Constants
-import pe.paku.weatherapp.domain.model.CityDayWeather
 import pe.paku.weatherapp.presentation.home_weather.components.DateWeekWeatherItem
 import pe.paku.weatherapp.presentation.home_weather.components.HeaderCityWeather
+import pe.paku.weatherapp.presentation.home_weather.components.HoursWeeklyWeatherBody
 
 @ExperimentalPagerApi
 @Composable
@@ -132,11 +132,18 @@ fun getBodyCityWeather(
                                 DateWeekWeatherItem(daysCity)
                             }
                         }
-                        Text(
-                            text = state.detailCity.city.countryCode,
-                            style = MaterialTheme.typography.body1,
-                            textAlign = TextAlign.Center
+                        Divider(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(2.dp)
                         )
+                        BoxWithConstraints {
+                            Column(modifier = Modifier
+                                .height(height = (maxHeight.plus(56.dp)))
+                                .fillMaxSize()) {
+                                HoursWeeklyWeatherBody(state.detailCity, selectedDay = 0)
+                            }
+                        }
                     }
                 }
             }

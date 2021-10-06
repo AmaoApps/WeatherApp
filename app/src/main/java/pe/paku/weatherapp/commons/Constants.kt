@@ -18,4 +18,12 @@ object Constants {
         val LIGHT_RAIN: String = "lightRain"
         val CLOUDY: String = "cloudy"
     }
+
+    object WeatherFeature {
+        val TIME : String = "Time"
+        val TEMP : String = "Temp"
+        val CHANCE_RAIN : String = "Chance\nof rain"
+        val WIND : String = "Wind\n(mph)"
+        val HUMIDITY : String = "Humidity"
+    }
 }
