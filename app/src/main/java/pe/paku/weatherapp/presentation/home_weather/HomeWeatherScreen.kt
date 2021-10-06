@@ -6,6 +6,10 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -78,6 +82,7 @@ fun getBodyCityWeather(
     viewModel: HomeWeatherViewModel
 ){
     val pagerState = rememberPagerState()
+    var daySelected : Int  by remember { mutableStateOf(0) }
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -128,8 +133,11 @@ fun getBodyCityWeather(
                                 .padding(8.dp),
                             horizontalArrangement = Arrangement.SpaceBetween
                         ){
-                            for (daysCity in state.detailCity.days){
-                                DateWeekWeatherItem(daysCity)
+                            for ((index, daysCity) in state.detailCity.days.withIndex()){
+                                DateWeekWeatherItem(
+                                    dateCityWeek = daysCity,
+                                    daySelected = daySelected,
+                                    onClick = {daySelected = index; println("Pulsaste $index")})
                             }
                         }
                         Divider(
@@ -137,13 +145,7 @@ fun getBodyCityWeather(
                                 .fillMaxWidth()
                                 .height(2.dp)
                         )
-                        BoxWithConstraints {
-                            Column(modifier = Modifier
-                                .height(height = (maxHeight.plus(56.dp)))
-                                .fillMaxSize()) {
-                                HoursWeeklyWeatherBody(state.detailCity, selectedDay = 0)
-                            }
-                        }
+                        HoursWeeklyWeatherBody(state.detailCity, selectedDay = daySelected)
                     }
                 }
             }

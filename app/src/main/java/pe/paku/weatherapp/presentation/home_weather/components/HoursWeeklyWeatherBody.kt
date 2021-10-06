@@ -85,7 +85,7 @@ fun RowHourWeeklyWeather(cityHour: CityHourWeather? = null, isHeader :Boolean = 
                     contentAlignment = Alignment.Center
                 ){
                     Image(
-                        painter = painterResource(id = getIconWeatherByTypeWeather(cityHour.weatherType)),
+                        painter = painterResource(id = getIconWeatherByTypeWeather(cityHour.weatherType, isSelected = true)),
                         contentDescription = null,
                         modifier = Modifier.padding(4.dp)
                     )
